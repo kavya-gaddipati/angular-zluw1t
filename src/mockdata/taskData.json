@@ -1,0 +1,26 @@
+[
+  {
+    "taskName": "Task 1",
+    "assignedTo": "Tom",
+    "priority": "Low",
+    "status": "Open"
+  },
+  {
+    "taskName": "Task 2",
+    "assignedTo": "Rob",
+    "priority": "High",
+    "status": "In Progress"
+  },
+  {
+    "taskName": "Task 3",
+    "assignedTo": "Donna",
+    "priority": "Critical",
+    "status": "Completed"
+  },
+  {
+    "taskName": "Task 4",
+    "assignedTo": "Bob",
+    "priority": "Low",
+    "status": "In Progress"
+  }
+]

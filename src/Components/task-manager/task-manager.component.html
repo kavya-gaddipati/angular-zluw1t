@@ -1,0 +1,22 @@
+<div>
+  <h1 class="center">Task Manager</h1>
+  <table style="width:70%">
+    <caption>
+      <h2>Tasks List</h2>
+    </caption>
+    <tr>
+      <th>Task Name</th>
+      <th>Assigned To</th>
+      <th>Priority</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.taskName }}</td>
+      <td>{{ task.assignedTo }}</td>
+      <td>{{ task.priority }}</td>
+      <td>{{ task.status }}</td>
+      <td><button>Complete</button></td>
+    </tr>
+  </table>
+</div>
