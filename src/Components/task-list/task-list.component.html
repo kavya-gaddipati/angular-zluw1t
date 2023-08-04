@@ -1,0 +1,31 @@
+<table style="width:100%">
+  <caption>
+    <h2>Tasks List</h2>
+  </caption>
+  <tr>
+    <th>ID</th>
+    <th>Task Name</th>
+    <th>Assigned To</th>
+    <th>Priority</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let task of tasks">
+    <td>{{ task.id }}</td>
+    <td>{{ task.taskName }}</td>
+    <td>{{ task.assignedTo }}</td>
+    <td>{{ task.priority }}</td>
+    <td>{{ task.status }}</td>
+    <td *ngIf="task.status == 'In Progress' || task.status == 'Completed'">
+      <button
+        [disabled]="task.status == 'Completed'"
+        (click)="onComplete(task.id)"
+      >
+        Complete
+      </button>
+    </td>
+    <td *ngIf="task.status == 'Open'">
+      <button (click)="onStart(task.id)">Start</button>
+    </td>
+  </tr>
+</table>

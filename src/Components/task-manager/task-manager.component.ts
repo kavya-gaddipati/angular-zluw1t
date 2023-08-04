@@ -8,12 +8,6 @@ import { GetTaskDataService } from '../../services/get-task-data.service';
   styleUrls: ['./task-manager.component.css'],
 })
 export class TaskManagerComponent implements OnInit {
-  tasks: Tasks[] = [];
-  constructor(private getTaskDataService: GetTaskDataService) {
-    this.getTaskDataService.getTasks().subscribe((data) => {
-      this.tasks = data;
-    });
-  }
-
+  constructor() {}
   ngOnInit() {}
 }

@@ -11,6 +11,7 @@ export class GetTaskDataService {
 
   getTasks() {
     //When working with actual data fetch it using http GET call.
+    window.localStorage.setItem('tasks', JSON.stringify(this.data));
     return of(this.data);
   }
 }

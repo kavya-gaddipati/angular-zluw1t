@@ -1,17 +1,16 @@
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+a:link,
+a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid blue;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
-table,
-th,
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th,
-td {
-  padding: 5px;
-  text-align: left;
+a:hover,
+a:active {
+  background-color: blue;
+  color: white;
 }
