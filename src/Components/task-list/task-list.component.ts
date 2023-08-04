@@ -13,7 +13,6 @@ export class TaskListComponent implements OnInit {
     this.getTaskDataService.getTasks().subscribe((data) => {
       this.tasks = data;
       this.tasks = JSON.parse(window.localStorage.getItem('tasks'));
-      console.log(this.tasks);
     });
   }
 
