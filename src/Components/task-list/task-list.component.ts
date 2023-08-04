@@ -27,7 +27,6 @@ export class TaskListComponent implements OnInit {
       if (task.id == id) {
         task.status = 'Closed';
         localStorage.setItem('allTasks', JSON.stringify(this.tasks));
-        console.log(this.tasks);
       }
     });
   }

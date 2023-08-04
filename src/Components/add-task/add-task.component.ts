@@ -10,9 +10,7 @@ export class AddTaskComponent implements OnInit {
   addTaskForm: FormGroup;
   options = ['Low', 'Medium', 'High', 'Critical'];
   submitted: boolean;
-  taskName;
-  assignedTo;
-  priority;
+  priority = 'Low';
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -22,7 +20,9 @@ export class AddTaskComponent implements OnInit {
       priority: ['', Validators.required],
     });
   }
-
+  get f() {
+    return this.addTaskForm.controls;
+  }
   onSubmit(form) {}
   onReset() {}
 }

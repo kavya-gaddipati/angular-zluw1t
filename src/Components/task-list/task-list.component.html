@@ -45,11 +45,17 @@
           [items]="options"
           [(ngModel)]="statusSelected"
           (change)="onFilterChange(statusSelected)"
-          (clear)="onFilterChange(statusSelected)"
+          [clearable]="false"
         ></ng-select>
       </div>
-      <table class="table table-bordered table-striped table-responsive">
-        <caption style="caption-side: top">
+      <table
+        class="
+          table table-bordered table-striped table-responsive
+          caption-top
+          table-hover
+        "
+      >
+        <caption>
           <h3>Tasks List</h3>
         </caption>
         <thead class="table-dark">
@@ -63,7 +69,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let task of tasks">
+          <tr
+            *ngFor="let task of tasks"
+            [ngClass]="{ 'table-info': task.status == 'Closed' }"
+          >
             <!-- <th scope="row">1</th>
             <td>Bootstrap 4 CDN and Starter Template</td>
             <td>Cristina</td>
