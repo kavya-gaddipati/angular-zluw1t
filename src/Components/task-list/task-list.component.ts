@@ -12,7 +12,7 @@ export class TaskListComponent implements OnInit {
   constructor(private getTaskDataService: GetTaskDataService) {
     this.getTaskDataService.getTasks().subscribe((data) => {
       this.tasks = data;
-      this.tasks = JSON.parse(window.localStorage.getItem('tasks'));
+      // this.tasks = JSON.parse(window.localStorage.getItem('tasks'));
     });
   }
 
@@ -34,5 +34,9 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tasks = window.localStorage.getItem('tasks')
+      ? JSON.parse(localStorage.getItem('tasks'))
+      : [];
+  }
 }
