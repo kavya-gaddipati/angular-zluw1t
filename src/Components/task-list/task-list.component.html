@@ -1,31 +1,91 @@
-<table style="width:100%">
-  <caption>
-    <h2>Tasks List</h2>
-  </caption>
-  <tr>
-    <th>ID</th>
-    <th>Task Name</th>
-    <th>Assigned To</th>
-    <th>Priority</th>
-    <th>Status</th>
-    <th></th>
-  </tr>
-  <tr *ngFor="let task of tasks">
-    <td>{{ task.id }}</td>
-    <td>{{ task.taskName }}</td>
-    <td>{{ task.assignedTo }}</td>
-    <td>{{ task.priority }}</td>
-    <td>{{ task.status }}</td>
-    <td *ngIf="task.status == 'In Progress' || task.status == 'Completed'">
-      <button
-        [disabled]="task.status == 'Completed'"
-        (click)="onComplete(task.id)"
-      >
-        Complete
-      </button>
-    </td>
-    <td *ngIf="task.status == 'Open'">
-      <button (click)="onStart(task.id)">Start</button>
-    </td>
-  </tr>
-</table>
+<!-- <div>
+  <table class="table table-bordered table-striped">
+    <caption style="caption-side: top">
+      Tasks List
+    </caption>
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Task Name</th>
+        <th>Assigned To</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.id }}</td>
+        <td>{{ task.taskName }}</td>
+        <td>{{ task.assignedTo }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.status }}</td>
+        <td *ngIf="task.status == 'In Progress' || task.status == 'Completed'">
+          <button
+            [disabled]="task.status == 'Completed'"
+            (click)="onComplete(task.id)"
+          >
+            Complete
+          </button>
+        </td>
+        <td *ngIf="task.status == 'Open'">
+          <button (click)="onStart(task.id)">Start</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-striped">
+        <caption style="caption-side: top">
+          <h3>Tasks List</h3>
+        </caption>
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task Name</th>
+            <th scope="col">Assigned To</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <!-- <th scope="row">1</th>
+            <td>Bootstrap 4 CDN and Starter Template</td>
+            <td>Cristina</td>
+            <td>2.846</td> -->
+            <td>{{ task.id }}</td>
+            <td>{{ task.taskName }}</td>
+            <td>{{ task.assignedTo }}</td>
+            <td>{{ task.priority }}</td>
+            <td>{{ task.status }}</td>
+            <td *ngIf="task.status == 'In Progress' || task.status == 'Closed'">
+              <button
+                type="button"
+                [disabled]="task.status == 'Closed'"
+                class="btn btn-primary"
+                (click)="onComplete(task.id)"
+              >
+                Close
+              </button>
+            </td>
+            <td *ngIf="task.status == 'Open'">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="onStart(task.id)"
+              >
+                Start
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

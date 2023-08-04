@@ -10,17 +10,18 @@ import { GetTaskDataService } from '../../services/get-task-data.service';
 export class TaskListComponent implements OnInit {
   tasks: any;
   constructor(private getTaskDataService: GetTaskDataService) {
-    this.getTaskDataService.getTasks().subscribe((data) => {
-      this.tasks = data;
-      // this.tasks = JSON.parse(window.localStorage.getItem('tasks'));
-    });
+    //Use when fetching data using http get call
+    // this.getTaskDataService.getTasks().subscribe((data) => {
+    //   this.tasks = data;
+    // });
   }
 
   onComplete(id) {
     this.tasks.forEach((task) => {
       if (task.id == id) {
-        task.status = 'Completed';
-        window.localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        task.status = 'Closed';
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        console.log(this.tasks);
       }
     });
   }
@@ -29,13 +30,13 @@ export class TaskListComponent implements OnInit {
     this.tasks.forEach((task) => {
       if (task.id == id) {
         task.status = 'In Progress';
-        window.localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
       }
     });
   }
 
   ngOnInit() {
-    this.tasks = window.localStorage.getItem('tasks')
+    this.tasks = localStorage.getItem('tasks')
       ? JSON.parse(localStorage.getItem('tasks'))
       : [];
   }

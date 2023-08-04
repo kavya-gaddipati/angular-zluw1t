@@ -6,12 +6,14 @@ import taskData from '../mockdata/taskData.json';
   providedIn: 'root',
 })
 export class GetTaskDataService {
-  constructor() {}
+  constructor() {
+    localStorage.setItem('tasks', JSON.stringify(this.data));
+  }
   data = taskData;
 
   getTasks() {
-    //When working with actual data fetch it using http GET call.
-    window.localStorage.setItem('tasks', JSON.stringify(this.data));
+    //When working with actual data fetch task details using http GET call.
+
     return of(this.data);
   }
 }

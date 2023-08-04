@@ -18,7 +18,7 @@
     "taskName": "Task 3",
     "assignedTo": "Donna",
     "priority": "Critical",
-    "status": "Completed"
+    "status": "Closed"
   },
   {
     "id": 4,
