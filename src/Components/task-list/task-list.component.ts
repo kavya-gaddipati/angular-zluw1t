@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ɵbypassSanitizationTrustScript,
+} from '@angular/core';
 import { Tasks } from '../../model/task';
 import { GetTaskDataService } from '../../services/get-task-data.service';
 
@@ -9,6 +13,8 @@ import { GetTaskDataService } from '../../services/get-task-data.service';
 })
 export class TaskListComponent implements OnInit {
   tasks: any;
+  options = ['All', 'Open', 'In Progress', 'Closed'];
+  statusSelected = 'All';
   constructor(private getTaskDataService: GetTaskDataService) {
     //Use when fetching data using http get call
     // this.getTaskDataService.getTasks().subscribe((data) => {
@@ -20,7 +26,7 @@ export class TaskListComponent implements OnInit {
     this.tasks.forEach((task) => {
       if (task.id == id) {
         task.status = 'Closed';
-        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        localStorage.setItem('allTasks', JSON.stringify(this.tasks));
         console.log(this.tasks);
       }
     });
@@ -30,14 +36,28 @@ export class TaskListComponent implements OnInit {
     this.tasks.forEach((task) => {
       if (task.id == id) {
         task.status = 'In Progress';
-        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        localStorage.setItem('allTasks', JSON.stringify(this.tasks));
       }
     });
   }
 
   ngOnInit() {
-    this.tasks = localStorage.getItem('tasks')
-      ? JSON.parse(localStorage.getItem('tasks'))
+    this.tasks = localStorage.getItem('allTasks')
+      ? JSON.parse(localStorage.getItem('allTasks'))
       : [];
+  }
+
+  onFilterChange(status) {
+    if (status != null && status != undefined && status != 'All') {
+      let totaldata = localStorage.getItem('allTasks')
+        ? JSON.parse(localStorage.getItem('allTasks'))
+        : [];
+      let data = totaldata.filter((task) => task.status == status);
+      this.tasks = data;
+    } else if (status == 'All' || status == null || status == undefined) {
+      this.tasks = localStorage.getItem('allTasks')
+        ? JSON.parse(localStorage.getItem('allTasks'))
+        : [];
+    }
   }
 }

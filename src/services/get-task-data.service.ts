@@ -7,7 +7,7 @@ import taskData from '../mockdata/taskData.json';
 })
 export class GetTaskDataService {
   constructor() {
-    localStorage.setItem('tasks', JSON.stringify(this.data));
+    localStorage.setItem('allTasks', JSON.stringify(this.data));
   }
   data = taskData;
 
