@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRouterModule } from './app-router/app-router.module';
 import { AddTaskComponent } from './Components/add-task/add-task.component';
 import { TaskListComponent } from './Components/task-list/task-list.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { TaskListComponent } from './Components/task-list/task-list.component';
     FormsModule,
     ReactiveFormsModule,
     AppRouterModule,
+    NgSelectModule,
   ],
   declarations: [TaskManagerComponent, AddTaskComponent, TaskListComponent],
   providers: [GetTaskDataService],

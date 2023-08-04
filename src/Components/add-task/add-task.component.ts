@@ -23,6 +23,6 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit(form) {}
   onReset() {}
 }
