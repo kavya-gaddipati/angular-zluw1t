@@ -1,16 +1,10 @@
-/* a:link,
-a:visited {
-  background-color: white;
-  color: black;
-  border: 2px solid blue;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
-
-a:hover,
-a:active {
-  background-color: blue;
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
   color: white;
-} */
+  text-align: center;
+  height: 8%;
+}
