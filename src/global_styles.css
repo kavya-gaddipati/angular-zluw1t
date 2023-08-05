@@ -1,7 +1,6 @@
 /* Add application styles & imports to this file! */
 @import '~@ng-select/ng-select/themes/default.theme.css';
-@import 'node_modules/bootstrap/dist/css/bootstrap.min.css';
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+@import 'node_modules/bootstrap/dist/css/bootstrap.css';
 .center {
   display: flex;
   justify-content: center;
