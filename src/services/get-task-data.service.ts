@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import taskData from '../mockdata/taskData.json';
 
 @Injectable({
@@ -13,7 +13,6 @@ export class GetTaskDataService {
 
   getTasks() {
     //When working with actual data fetch task details using http GET call.
-
     return of(this.data);
   }
 }

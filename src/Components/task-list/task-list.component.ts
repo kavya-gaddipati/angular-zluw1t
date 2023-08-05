@@ -16,9 +16,14 @@ export class TaskListComponent implements OnInit {
   options = ['All', 'Open', 'In Progress', 'Closed'];
   statusSelected = 'All';
   constructor(private getTaskDataService: GetTaskDataService) {
+    this.tasks = localStorage.getItem('allTasks')
+      ? JSON.parse(localStorage.getItem('allTasks'))
+      : [];
     //Use when fetching data using http get call
     // this.getTaskDataService.getTasks().subscribe((data) => {
-    //   this.tasks = data;
+    //   if (data != null) {
+    //     this.tasks = data;
+    //   }
     // });
   }
 

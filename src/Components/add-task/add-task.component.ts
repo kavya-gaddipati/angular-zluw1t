@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Tasks } from '../../model/task';
 
 @Component({
   selector: 'app-add-task',
@@ -9,20 +10,41 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddTaskComponent implements OnInit {
   addTaskForm: FormGroup;
   options = ['Low', 'Medium', 'High', 'Critical'];
-  submitted: boolean;
+  submitted: boolean = false;
   priority = 'Low';
+  tasks: any;
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.tasks = localStorage.getItem('allTasks')
+      ? JSON.parse(localStorage.getItem('allTasks'))
+      : [];
+    this.tasks.sort(function (a, b) {
+      return a.id - b.id;
+    }); // sort the tasks based on ID to find the last ID value
     this.addTaskForm = this.formBuilder.group({
       taskName: ['', Validators.required],
       assignedTo: ['', Validators.required],
       priority: ['', Validators.required],
     });
   }
-  get f() {
-    return this.addTaskForm.controls;
+
+  onSubmit(form) {
+    this.submitted = true;
+    if (this.addTaskForm.invalid) {
+      return;
+    }
+    let id = this.tasks[this.tasks.length - 1].id;
+    let task = new Tasks();
+    task.id = id + 1;
+    task.taskName = form.taskName;
+    task.assignedTo = form.assignedTo;
+    task.priority = form.priority;
+    task.status = 'Open';
+    this.tasks.push(task);
+    localStorage.setItem('allTasks', JSON.stringify(this.tasks));
+    alert('Task Added Successfully!!!');
+    this.addTaskForm.reset();
+    this.submitted = false;
   }
-  onSubmit(form) {}
-  onReset() {}
 }

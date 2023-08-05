@@ -1,91 +1,65 @@
-<header class="jumbotron" style="padding:2%;">
-  <h3 class="text-center">Create Task</h3>
-</header>
-<!-- <div> -->
-<form [formGroup]="addTaskForm" (ngSubmit)="onSubmit(addTaskForm.value)">
-  <div class="form-row">
-    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-      <div class="form-group">
-        <label for="taskName">Task Name:</label>
-        <input
-          type="text"
-          formControlName="taskName"
-          id="taskName"
-          class="form-control"
-          placeholder="Task Name"
-          required
-          [ngClass]="{
-            'is-invalid': f.taskName.touched && f.taskName.errors,
-            'is-valid': f.taskName.valid
-          }"
-        />
-        <div
-          *ngIf="f.taskName.touched && f.taskName.errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f.taskName.errors.required">Task Name is required!</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
   <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-      <div class="form-group">
-        <label for="assignedTo">Assigned to:</label>
-        <input
-          type="text"
-          [ngClass]="{
-            'is-invalid': f.assignedTo.touched && f.assignedTo.errors,
-            'is-valid': f.assignedTo.valid
-          }"
-          formControlName="assignedTo"
-          id="assignedTo"
-          class="form-control"
-          placeholder="Enter Assignee"
-          required
-        />
-        <div
-          *ngIf="f.assignedTo.touched && f.assignedTo.errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f.assignedTo.errors.required">Email is required!</div>
+    <div class="col-md-6 offset-md-3">
+      <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit(addTaskForm.value)">
+        <div class="form-group">
+          <label for="taskName">Task Name:</label>
+          <input
+            formControlName="taskName"
+            type="text"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && addTaskForm.controls.taskName.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && addTaskForm.controls.taskName.errors"
+            class="text-danger"
+          >
+            <div
+              *ngIf="submitted && addTaskForm.controls.taskName.errors.required"
+            >
+              Task Name is required
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-      <div class="form-group">
-        <label for="priority">Priority:</label>
-        <ng-select
-          [items]="options"
-          [(ngModel)]="priority"
-          formControlName="priority"
-          [clearable]="false"
-        ></ng-select>
-        <div
-          *ngIf="f.priority.touched && f.priority.errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f.priority.errors.required">Priority is required!</div>
+        <div class="form-group">
+          <label for="assignedTo">Assigned To:</label>
+          <input
+            formControlName="assignedTo"
+            type="text"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && addTaskForm.controls.assignedTo.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && addTaskForm.controls.assignedTo.errors"
+            class="text-danger"
+          >
+            <div
+              *ngIf="
+                submitted && addTaskForm.controls.assignedTo.errors.required
+              "
+            >
+              Assigned To is required
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="prioirty">Priority:</label>
+          <!-- <input type="text" class="form-control" /> -->
+          <ng-select
+            [items]="options"
+            [(ngModel)]="priority"
+            formControlName="priority"
+            [clearable]="false"
+          ></ng-select>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary">Add Task</button>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"></div>
-    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-      <div class="form-group">
-        <button
-          type="submit"
-          [disabled]="addTaskForm.invalid"
-          class="btn btn-primary"
-        >
-          Add
-        </button>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"></div>
-  </div>
-</form>
-<!-- </div> -->
+</div>
