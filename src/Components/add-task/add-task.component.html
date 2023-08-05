@@ -1,6 +1,10 @@
 <div class="container" style="margin-top:75px">
   <div class="row">
     <div class="col-md-6 offset-md-3">
+      <h3>Create Task</h3>
+      <div class="alert alert-success alert-dismissible" *ngIf="showMessage">
+        <strong>Task created successfully!!</strong>
+      </div>
       <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit(addTaskForm.value)">
         <div class="form-group">
           <label for="taskName">Task Name:</label>
@@ -50,7 +54,6 @@
           <label for="prioirty">Priority:</label>
           <ng-select
             [items]="options"
-            [(ngModel)]="priority"
             formControlName="priority"
             [clearable]="false"
           ></ng-select>

@@ -11,8 +11,9 @@ export class AddTaskComponent implements OnInit {
   addTaskForm: FormGroup;
   options = ['Low', 'Medium', 'High', 'Critical'];
   submitted: boolean = false;
-  priority = 'Low';
+  // priority = 'Low';
   tasks: any;
+  showMessage: boolean = false;
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -21,11 +22,16 @@ export class AddTaskComponent implements OnInit {
       : [];
     this.tasks.sort(function (a, b) {
       return a.id - b.id;
-    }); // sort the tasks based on ID to find the last ID value
+    });
+    // sorting the tasks based on ID to find the last ID value
+    this.setForm();
+  }
+
+  setForm() {
     this.addTaskForm = this.formBuilder.group({
       taskName: ['', Validators.required],
       assignedTo: ['', Validators.required],
-      priority: ['', Validators.required],
+      priority: ['Low', Validators.required],
     });
   }
 
@@ -43,8 +49,12 @@ export class AddTaskComponent implements OnInit {
     task.status = 'Open';
     this.tasks.push(task);
     localStorage.setItem('allTasks', JSON.stringify(this.tasks));
-    alert('Task Added Successfully!!!');
+    this.showMessage = true;
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 5000);
     this.addTaskForm.reset();
+    this.setForm();
     this.submitted = false;
   }
 }
