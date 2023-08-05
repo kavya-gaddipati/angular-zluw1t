@@ -6,7 +6,7 @@
         <strong>Task created successfully!!</strong>
       </div>
       <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit(addTaskForm.value)">
-        <div class="form-group">
+        <div class="form-group space">
           <label for="taskName">Task Name:</label>
           <input
             formControlName="taskName"
@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group space">
           <label for="assignedTo">Assigned To:</label>
           <input
             formControlName="assignedTo"
@@ -50,7 +50,7 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group space">
           <label for="prioirty">Priority:</label>
           <ng-select
             [items]="options"
@@ -58,7 +58,7 @@
             [clearable]="false"
           ></ng-select>
         </div>
-        <div class="form-group" style="padding-top:10px">
+        <div class="form-group">
           <button class="btn btn-primary">Add Task</button>
         </div>
       </form>
