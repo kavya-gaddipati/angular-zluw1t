@@ -35,10 +35,6 @@
             *ngFor="let task of filteredTasks"
             [ngClass]="{ 'table-info': task.status == 'Closed' }"
           >
-            <!-- <th scope="row">1</th>
-            <td>Bootstrap 4 CDN and Starter Template</td>
-            <td>Cristina</td>
-            <td>2.846</td> -->
             <td>{{ task.id }}</td>
             <td>{{ task.taskName }}</td>
             <td>{{ task.assignedTo }}</td>
@@ -63,6 +59,9 @@
                 Start
               </button>
             </td>
+          </tr>
+          <tr *ngIf="filteredTasks.length == 0">
+            <td colspan="6" style="padding-left: 40%">No data to display</td>
           </tr>
         </tbody>
       </table>
