@@ -7,6 +7,7 @@ const appRoutes: Routes = [
   { path: 'taskList', component: TaskListComponent },
   { path: 'addTask', component: AddTaskComponent },
   { path: '', redirectTo: '/taskList', pathMatch: 'full' },
+  { path: '**', redirectTo: '/taskList', pathMatch: 'full' },
 ];
 
 @NgModule({

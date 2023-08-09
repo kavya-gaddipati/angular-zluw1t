@@ -13,12 +13,14 @@ import { GetTaskDataService } from '../../services/get-task-data.service';
 })
 export class TaskListComponent implements OnInit {
   tasks: any;
+  filteredTasks: any;
   options = ['All', 'Open', 'In Progress', 'Closed'];
   statusSelected = 'All';
   constructor(private getTaskDataService: GetTaskDataService) {
     this.tasks = localStorage.getItem('allTasks')
       ? JSON.parse(localStorage.getItem('allTasks'))
       : [];
+    this.filteredTasks = this.tasks;
     //Use when fetching data using http get call
     // this.getTaskDataService.getTasks().subscribe((data) => {
     //   if (data != null) {
@@ -34,6 +36,7 @@ export class TaskListComponent implements OnInit {
         localStorage.setItem('allTasks', JSON.stringify(this.tasks));
       }
     });
+    this.onFilterChange(this.statusSelected);
   }
 
   onStart(id) {
@@ -43,12 +46,14 @@ export class TaskListComponent implements OnInit {
         localStorage.setItem('allTasks', JSON.stringify(this.tasks));
       }
     });
+    this.onFilterChange(this.statusSelected);
   }
 
   ngOnInit() {
     this.tasks = localStorage.getItem('allTasks')
       ? JSON.parse(localStorage.getItem('allTasks'))
       : [];
+    this.filteredTasks = this.tasks;
   }
 
   onFilterChange(status) {
@@ -57,9 +62,9 @@ export class TaskListComponent implements OnInit {
         ? JSON.parse(localStorage.getItem('allTasks'))
         : [];
       let data = totaldata.filter((task) => task.status == status);
-      this.tasks = data;
+      this.filteredTasks = data;
     } else if (status == 'All' || status == null || status == undefined) {
-      this.tasks = localStorage.getItem('allTasks')
+      this.filteredTasks = localStorage.getItem('allTasks')
         ? JSON.parse(localStorage.getItem('allTasks'))
         : [];
     }

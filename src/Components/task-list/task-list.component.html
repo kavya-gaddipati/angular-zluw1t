@@ -32,7 +32,7 @@
         </thead>
         <tbody>
           <tr
-            *ngFor="let task of tasks"
+            *ngFor="let task of filteredTasks"
             [ngClass]="{ 'table-info': task.status == 'Closed' }"
           >
             <!-- <th scope="row">1</th>
