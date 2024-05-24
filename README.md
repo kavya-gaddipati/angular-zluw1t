@@ -1,6 +1,6 @@
 # angular-zluw1t
 
-Task Manager Application
+A Basic Task Manager Application
 
 It can also be used for
 
